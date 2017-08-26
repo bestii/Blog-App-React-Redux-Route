@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 class PostNew extends Component {
     // {...field.input} is used to wireup the event handllers to the input its a short hand for onChange=field.input.onChange so on..
-    renderTitleField(field){
+    renderField(field){
         return (
             <div className="form-group">
-                <label>Title</label>
+                <label>{field.label}</label>
                 <input
                     className="form-control"
                     type="text"
@@ -20,8 +20,19 @@ class PostNew extends Component {
         return (
             <form>
                 <Field
+                    label="Title"
                     name="title"
-                    component={this.renderTitleField}
+                    component={this.renderField}
+                />
+                <Field
+                    label="Categories"
+                    name="tag"
+                    component={this.renderField}
+                />
+                <Field
+                    label="Post Content"
+                    name="content"
+                    component={this.renderField}
                 />
             </form>
         );
