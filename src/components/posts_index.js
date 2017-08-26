@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions';
 class PostsIndex extends Component {
+    //This function is called right after the Component is rendered on the screen
+    componentDidMount(){
+        this.props.fetchPosts();
+    }
     render() {
         return (
             <div>
@@ -10,4 +15,5 @@ class PostsIndex extends Component {
     }
 }
 
-export default PostsIndex;
+//Shortcut to wireup using connect
+export default connect(null, { fetchPosts })(PostsIndex);
