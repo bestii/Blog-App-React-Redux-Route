@@ -11,7 +11,7 @@ class PostNew extends Component {
                     type="text"
                     {...field.input}
                 />
-                {field.meta.error}
+                {field.meta.touched ? field.meta.error : ''}
             </div>
         );
     }
@@ -47,7 +47,12 @@ class PostNew extends Component {
         );
     }
 }
-
+/*
+ *  Three different states of a reduxForm
+ *  Pristine --> Initial state right after load when user has not touched any of the form elements.
+ *  Touched -->  User has touched/focused an input and focused out.
+ *  Invalid -->  Its the state after touched when the elements dont satisfy the validation condition.
+ */
 function validate(values) {
     // values --> { title:'value', categories:'value', content:'value'}
     var errors = {};
