@@ -3,15 +3,19 @@ import { Field, reduxForm } from 'redux-form';
 class PostNew extends Component {
     // {...field.input} is used to wireup the event handllers to the input its a short hand for onChange=field.input.onChange so on..
     renderField(field) {
+        const className = `form-group ${field.meta.touched && field.meta.error ? 'has-danger':''}`;
         return (
-            <div className="form-group">
+            <div className={className}>
                 <label>{field.label}</label>
                 <input
                     className="form-control"
                     type="text"
                     {...field.input}
                 />
-                {field.meta.touched ? field.meta.error : ''}
+                <div className="text-help">
+                    {field.meta.touched ? field.meta.error : ''}
+                </div>
+
             </div>
         );
     }
