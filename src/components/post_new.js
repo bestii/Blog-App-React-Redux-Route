@@ -4,8 +4,8 @@ class PostNew extends Component {
     // {...field.input} is used to wireup the event handllers to the input its a short hand for onChange=field.input.onChange so on..
     renderField(field) {
         // Destructuring using ES6
-        const { meta } = field;
-        const className = `form-group ${meta.touched && meta.error ? 'has-danger':''}`;
+        const { meta: { touched, error } } = field;
+        const className = `form-group ${touched && error ? 'has-danger' : ''}`;
         return (
             <div className={className}>
                 <label>{field.label}</label>
@@ -15,7 +15,7 @@ class PostNew extends Component {
                     {...field.input}
                 />
                 <div className="text-help">
-                    {meta.touched ? meta.error : ''}
+                    {touched ? error : ''}
                 </div>
 
             </div>
