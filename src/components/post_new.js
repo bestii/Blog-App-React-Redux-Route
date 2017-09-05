@@ -26,9 +26,11 @@ class PostNew extends Component {
     }
     onSubmit(values) {
         // triggering the action creator
-        this.props.createPost(values);
-        // Since this component is linked to the route component it passes in some extra props like history for programatic navigation
-        this.props.history.push('/');
+        this.props.createPost(values, () => {
+            // Since this component is linked to the route component it passes in some extra props like history for programatic navigation
+            this.props.history.push('/');
+        });
+
     }
     // The field attribute doesn't know how to render UI for the element it only checks the under the hood functionalities
     // It calls a function that contains a JSX blob to render the UI(this function is automically called so we dont hav eto call it explicitly)
@@ -91,4 +93,4 @@ export default reduxForm({
     form: 'PostNewForm'
 })(
     connect(null, { createPost })(PostNew)
-);
+    );
