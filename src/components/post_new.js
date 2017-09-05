@@ -25,7 +25,8 @@ class PostNew extends Component {
         );
     }
     onSubmit(values) {
-        console.log(values)
+        // triggering the action creator
+        this.props.createPost(values);
     }
     // The field attribute doesn't know how to render UI for the element it only checks the under the hood functionalities
     // It calls a function that contains a JSX blob to render the UI(this function is automically called so we dont hav eto call it explicitly)
