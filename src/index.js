@@ -8,6 +8,8 @@ import promise from 'redux-promise';
 import reducers from './reducers';
 import PostIndex from './components/posts_index';
 import PostNew from './components/post_new';
+import PostShow from './components/post_show';
+
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 // '/'--->matches any route that starts with /
@@ -19,7 +21,8 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
-          <Route path="/posts/new" component={PostNew} /> 
+          <Route path="/posts/new" component={PostNew} />
+          <Route path="/posts/:id" component={PostShow} />  
           <Route path="/" component={PostIndex} />   
         </Switch>    
       </div>
