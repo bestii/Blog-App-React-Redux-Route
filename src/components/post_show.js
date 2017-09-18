@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPost } from '../action';
-class PostShow extends Component{
-    componentDidMount(){
-        //this.props.match.params.id;
-        this.props.fetchPost();
+class PostShow extends Component {
+    componentDidMount() {
+        // React router passes URL param information as the props to the component that is rendered on that route.
+        const { id } = this.props.match.params;
+        this.props.fetchPost(id);
     }
-    render(){
+    render() {
         return (
             <div>
                 Show Post!
@@ -15,8 +16,9 @@ class PostShow extends Component{
     }
 }
 
-function mapStateToProps({ posts }){
-
+// OwnProps points to components currently existing props
+function mapStateToProps({ posts }, OwnProps) {
+    return { post: posts[OwnProps.match.params.id] }
 }
 
-export default connect(null, { fetchPost })(PostShow);
+export default connect(mapStateToProps, { fetchPost })(PostShow);
