@@ -8,12 +8,14 @@ class PostsIndex extends Component {
     componentDidMount() {
         this.props.fetchPosts();
     }
-    renderPosts(){
+    renderPosts() {
         // Cannot directly use looping as its not an array so we are using lodash map funtion
-        return _.map(this.props.posts,post=>{
-            return(
+        return _.map(this.props.posts, post => {
+            return (
                 <li className="list-group-item" key={post.id}>
-                    {post.title}
+                    <Link to={`/posts/${post.id}`}>
+                        {post.title}
+                    </Link>
                 </li>
             );
         });
